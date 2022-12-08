@@ -42,7 +42,7 @@ fun HistoryItem(
                 fontWeight = FontWeight.Bold
             )
         }
-        IconButton(onClick = { onClose }) {
+        IconButton(onClick = { onClose() }) {
             Icon(imageVector = Icons.Filled.Close, contentDescription = "close icon")
         }
     }

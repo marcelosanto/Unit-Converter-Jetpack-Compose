@@ -1,4 +1,4 @@
-package xyz.marcelo.androidapptemplate
+package xyz.marcelo.androidapptemplate.view
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -8,18 +8,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import xyz.marcelo.androidapptemplate.view.HistoryScreen
-import xyz.marcelo.androidapptemplate.view.TopScreen
+import xyz.marcelo.androidapptemplate.ConverterViewModel
+import xyz.marcelo.androidapptemplate.ConverterViewModelFactory
 
 @Composable
 fun BaseScreen(
+    factory: ConverterViewModelFactory,
     modifier: Modifier = Modifier,
-    converterViewModel: ConverterViewModel = viewModel()
+    converterViewModel: ConverterViewModel = viewModel(factory = factory)
 ) {
     val list = converterViewModel.getConversions()
 
     Column(modifier = modifier.padding(30.dp)) {
-        TopScreen(list)
+        TopScreen(list) { msg1, msg2 ->
+            converterViewModel.addResult(msg1, msg2)
+        }
         Spacer(modifier = modifier.height(20.dp))
         HistoryScreen()
     }

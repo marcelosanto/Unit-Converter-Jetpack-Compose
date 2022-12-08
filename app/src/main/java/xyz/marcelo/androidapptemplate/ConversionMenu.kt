@@ -22,7 +22,11 @@ import androidx.compose.ui.unit.toSize
 import xyz.marcelo.androidapptemplate.model.Conversion
 
 @Composable
-fun ConversionMenu(list: List<Conversion>, modifier: Modifier = Modifier) {
+fun ConversionMenu(
+    list: List<Conversion>,
+    modifier: Modifier = Modifier,
+    convert: (Conversion) -> Unit
+) {
     val displayingText = remember { mutableStateOf("Selecione o tipo de conversão") }
     val textFieldSize = remember { mutableStateOf(Size.Zero) }
     val expanded = remember { mutableStateOf(false) }
@@ -55,6 +59,7 @@ fun ConversionMenu(list: List<Conversion>, modifier: Modifier = Modifier) {
                 DropdownMenuItem(onClick = {
                     displayingText.value = conversion.description
                     expanded.value = false
+                    convert(conversion)
                 }) {
                     Text(
                         text = conversion.description,

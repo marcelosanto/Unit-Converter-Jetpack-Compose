@@ -1,5 +1,7 @@
 package xyz.marcelo.androidapptemplate.view.viewmodel
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
@@ -9,6 +11,10 @@ import xyz.marcelo.androidapptemplate.data.ConversionResult
 import xyz.marcelo.androidapptemplate.data.ConverterRepository
 
 class ConverterViewModel(private val repository: ConverterRepository) : ViewModel() {
+    val selectedConversion: MutableState<Conversion?> = mutableStateOf(null)
+    val inputText: MutableState<String> = mutableStateOf("")
+    val typedValue = mutableStateOf("0.0")
+    
     fun getConversions() = listOf(
         Conversion(1, "KG para Gramas", "KG", "GR", 1000.0),
         Conversion(2, "Gramas para KG", "GR", "KG", 0.001),

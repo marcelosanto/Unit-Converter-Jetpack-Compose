@@ -1,9 +1,6 @@
 package xyz.marcelo.androidapptemplate.view
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import xyz.marcelo.androidapptemplate.data.Conversion
 import xyz.marcelo.androidapptemplate.view.components.ConversionMenu
 import xyz.marcelo.androidapptemplate.view.components.InputBlock
@@ -12,17 +9,15 @@ import java.math.RoundingMode
 import java.text.DecimalFormat
 
 @Composable
-fun TopScreen(list: List<Conversion>, save: (String, String) -> Unit) {
-    val selectedConversion: MutableState<Conversion?> = remember {
-        mutableStateOf(null)
-    }
-
-    val inputText: MutableState<String> = remember {
-        mutableStateOf("")
-    }
-
-    val typedValue = remember {
-        mutableStateOf("0.0")
+fun TopScreen(
+    list: List<Conversion>,
+    selectedConversion: MutableState<Conversion?>,
+    inputText: MutableState<String>,
+    typedValue: MutableState<String>,
+    save: (String, String) -> Unit
+) {
+    var toSave by remember {
+        mutableStateOf(false)
     }
 
     ConversionMenu(list = list) {
@@ -33,6 +28,7 @@ fun TopScreen(list: List<Conversion>, save: (String, String) -> Unit) {
     selectedConversion.value?.let {
         InputBlock(conversion = it, inputText = inputText) { input ->
             typedValue.value = input
+            toSave = true
         }
     }
 
@@ -49,7 +45,10 @@ fun TopScreen(list: List<Conversion>, save: (String, String) -> Unit) {
         val message1 = "${typedValue.value} ${selectedConversion.value!!.convertFrom} é igual a"
         val message2 = "$roundedResult ${selectedConversion.value!!.convertTo}"
 
-        save(message1, message2)
+        if (toSave) {
+            save(message1, message2)
+            toSave = false
+        }
         ResultBlock(message1 = message1, message2 = message2)
     }
 }

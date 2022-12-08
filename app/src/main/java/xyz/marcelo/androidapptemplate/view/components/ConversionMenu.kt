@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.layout.onGloballyPositioned
@@ -27,7 +28,7 @@ fun ConversionMenu(
     modifier: Modifier = Modifier,
     convert: (Conversion) -> Unit
 ) {
-    val displayingText = remember { mutableStateOf("Selecione o tipo de conversão") }
+    val displayingText = rememberSaveable { mutableStateOf("Selecione o tipo de conversão") }
     val textFieldSize = remember { mutableStateOf(Size.Zero) }
     val expanded = remember { mutableStateOf(false) }
     val icon = if (expanded.value) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown

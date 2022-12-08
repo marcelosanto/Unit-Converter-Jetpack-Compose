@@ -1,4 +1,4 @@
-package xyz.marcelo.androidapptemplate.model
+package xyz.marcelo.androidapptemplate.data
 
 data class Conversion(
     val id: Int,

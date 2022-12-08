@@ -4,10 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import xyz.marcelo.androidapptemplate.ConversionMenu
-import xyz.marcelo.androidapptemplate.InputBlock
-import xyz.marcelo.androidapptemplate.ResultBlock
-import xyz.marcelo.androidapptemplate.model.Conversion
+import xyz.marcelo.androidapptemplate.data.Conversion
+import xyz.marcelo.androidapptemplate.view.components.ConversionMenu
+import xyz.marcelo.androidapptemplate.view.components.InputBlock
+import xyz.marcelo.androidapptemplate.view.components.ResultBlock
 import java.math.RoundingMode
 import java.text.DecimalFormat
 

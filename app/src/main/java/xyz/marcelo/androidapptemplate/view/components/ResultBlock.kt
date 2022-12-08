@@ -1,4 +1,4 @@
-package xyz.marcelo.androidapptemplate
+package xyz.marcelo.androidapptemplate.view.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

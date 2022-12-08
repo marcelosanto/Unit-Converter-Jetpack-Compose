@@ -1,7 +1,7 @@
 package xyz.marcelo.androidapptemplate
 
 import androidx.lifecycle.ViewModel
-import xyz.marcelo.androidapptemplate.model.Conversion
+import xyz.marcelo.androidapptemplate.data.Conversion
 
 class ConverterViewModel : ViewModel() {
     fun getConversions() = listOf(

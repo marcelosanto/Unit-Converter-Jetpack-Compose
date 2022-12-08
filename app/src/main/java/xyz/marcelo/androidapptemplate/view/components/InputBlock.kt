@@ -1,4 +1,4 @@
-package xyz.marcelo.androidapptemplate
+package xyz.marcelo.androidapptemplate.view.components
 
 import android.content.Context
 import android.widget.Toast
@@ -16,7 +16,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import xyz.marcelo.androidapptemplate.model.Conversion
+import xyz.marcelo.androidapptemplate.data.Conversion
 
 @Composable
 fun InputBlock(

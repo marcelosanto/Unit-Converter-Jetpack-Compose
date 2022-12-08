@@ -1,4 +1,4 @@
-package xyz.marcelo.androidapptemplate
+package xyz.marcelo.androidapptemplate.view.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.toSize
-import xyz.marcelo.androidapptemplate.model.Conversion
+import xyz.marcelo.androidapptemplate.data.Conversion
 
 @Composable
 fun ConversionMenu(

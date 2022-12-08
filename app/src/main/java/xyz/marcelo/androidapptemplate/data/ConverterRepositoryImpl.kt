@@ -11,7 +11,7 @@ class ConverterRepositoryImpl(private val dao: ConverterDAO) : ConverterReposito
         dao.deleteResult(result)
     }
 
-    override fun deleteAllResults() {
+    override suspend fun deleteAllResults() {
         dao.deleteAll()
     }
 

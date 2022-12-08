@@ -7,19 +7,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.ui.Modifier
-import xyz.marcelo.androidapptemplate.data.ConverterDatabase
-import xyz.marcelo.androidapptemplate.data.ConverterRepositoryImpl
+import dagger.hilt.android.AndroidEntryPoint
 import xyz.marcelo.androidapptemplate.ui.theme.AndroidAppTemplateTheme
 import xyz.marcelo.androidapptemplate.view.BaseScreen
 import xyz.marcelo.androidapptemplate.view.viewmodel.ConverterViewModelFactory
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    @Inject
+    lateinit var factory: ConverterViewModelFactory
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val dao = ConverterDatabase.getInstance(application).converterDAO
-        val repository = ConverterRepositoryImpl(dao)
-        val factory = ConverterViewModelFactory(repository)
 
         setContent {
             AndroidAppTemplateTheme {

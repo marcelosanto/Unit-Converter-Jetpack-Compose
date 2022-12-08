@@ -1,4 +1,4 @@
-package xyz.marcelo.androidapptemplate
+package xyz.marcelo.androidapptemplate.view.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,6 +17,8 @@ class ConverterViewModel(private val repository: ConverterRepository) : ViewMode
         Conversion(5, "Litro para Mililitro", "LT", "ML", 1000.0),
         Conversion(6, "Mililitro para Litro", "ML", "LT", 0.001),
     )
+
+    val resultList = repository.getSavedResults()
 
     fun addResult(message1: String, message2: String) {
         viewModelScope.launch(Dispatchers.IO) {

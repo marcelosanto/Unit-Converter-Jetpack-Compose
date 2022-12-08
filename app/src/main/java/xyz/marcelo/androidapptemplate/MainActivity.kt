@@ -11,6 +11,7 @@ import xyz.marcelo.androidapptemplate.data.ConverterDatabase
 import xyz.marcelo.androidapptemplate.data.ConverterRepositoryImpl
 import xyz.marcelo.androidapptemplate.ui.theme.AndroidAppTemplateTheme
 import xyz.marcelo.androidapptemplate.view.BaseScreen
+import xyz.marcelo.androidapptemplate.view.viewmodel.ConverterViewModelFactory
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

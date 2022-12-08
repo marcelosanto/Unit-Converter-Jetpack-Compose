@@ -11,11 +11,11 @@ class ConverterRepositoryImpl(private val dao: ConverterDAO) : ConverterReposito
         dao.deleteResult(result)
     }
 
-    override suspend fun deleteAllResults() {
+    override fun deleteAllResults() {
         dao.deleteAll()
     }
 
-    override suspend fun getSavedResults(): Flow<List<ConversionResult>> {
+    override fun getSavedResults(): Flow<List<ConversionResult>> {
         return dao.getResults()
     }
 }

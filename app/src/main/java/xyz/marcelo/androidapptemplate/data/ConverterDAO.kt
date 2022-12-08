@@ -16,7 +16,7 @@ interface ConverterDAO {
     suspend fun deleteResult(result: ConversionResult)
 
     @Query("DELETE FROM result_table")
-    suspend fun deleteAll()
+    fun deleteAll()
 
     @Query("SELECT * FROM result_table")
     fun getResults(): Flow<List<ConversionResult>>

@@ -1,4 +1,4 @@
-package xyz.marcelo.androidapptemplate
+package xyz.marcelo.androidapptemplate.view.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

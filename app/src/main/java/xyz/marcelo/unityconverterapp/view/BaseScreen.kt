@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import xyz.marcelo.unityconverterapp.view.components.TopScreen
 import xyz.marcelo.unityconverterapp.view.history.HistoryScreen
 import xyz.marcelo.unityconverterapp.view.viewmodel.ConverterViewModel
 import xyz.marcelo.unityconverterapp.view.viewmodel.ConverterViewModelFactory
@@ -25,6 +26,7 @@ fun BaseScreen(
 
     when (configuration.orientation) {
         Configuration.ORIENTATION_LANDSCAPE -> {
+            isLandscape = true
             Row(
                 modifier = modifier
                     .padding(30.dp)
@@ -35,7 +37,8 @@ fun BaseScreen(
                     list,
                     converterViewModel.selectedConversion,
                     converterViewModel.inputText,
-                    converterViewModel.typedValue
+                    converterViewModel.typedValue,
+                    isLandscape
                 ) { msg1, msg2 ->
                     converterViewModel.addResult(msg1, msg2)
                 }
@@ -50,12 +53,14 @@ fun BaseScreen(
             }
         }
         else -> {
+            isLandscape = false
             Column(modifier = modifier.padding(30.dp)) {
                 TopScreen(
                     list,
                     converterViewModel.selectedConversion,
                     converterViewModel.inputText,
-                    converterViewModel.typedValue
+                    converterViewModel.typedValue,
+                    isLandscape
                 ) { msg1, msg2 ->
                     converterViewModel.addResult(msg1, msg2)
                 }

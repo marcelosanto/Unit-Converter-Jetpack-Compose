@@ -25,6 +25,7 @@ import xyz.marcelo.unityconverterapp.data.Conversion
 @Composable
 fun ConversionMenu(
     list: List<Conversion>,
+    isLandScape: Boolean,
     modifier: Modifier = Modifier,
     convert: (Conversion) -> Unit
 ) {
@@ -34,22 +35,40 @@ fun ConversionMenu(
     val icon = if (expanded.value) Icons.Filled.KeyboardArrowUp else Icons.Filled.KeyboardArrowDown
 
     Column {
-        OutlinedTextField(
-            value = displayingText.value,
-            onValueChange = { displayingText.value = it },
-            textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
-            modifier = modifier
-                .fillMaxWidth()
-                .onGloballyPositioned { coord ->
-                    textFieldSize.value = coord.size.toSize()
+        if (isLandScape) {
+            OutlinedTextField(
+                value = displayingText.value,
+                onValueChange = { displayingText.value = it },
+                textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
+                modifier = modifier
+                    .onGloballyPositioned { coord ->
+                        textFieldSize.value = coord.size.toSize()
+                    },
+                label = { Text(text = "Tipos de Conversões") },
+                trailingIcon = {
+                    Icon(imageVector = icon, contentDescription = "icon",
+                        modifier.clickable { expanded.value = !expanded.value })
                 },
-            label = { Text(text = "Tipos de Conversões") },
-            trailingIcon = {
-                Icon(imageVector = icon, contentDescription = "icon",
-                    modifier.clickable { expanded.value = !expanded.value })
-            },
-            readOnly = true
-        )
+                readOnly = true
+            )
+        } else {
+            OutlinedTextField(
+                value = displayingText.value,
+                onValueChange = { displayingText.value = it },
+                textStyle = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
+                modifier = modifier
+                    .fillMaxWidth()
+                    .onGloballyPositioned { coord ->
+                        textFieldSize.value = coord.size.toSize()
+                    },
+                label = { Text(text = "Tipos de Conversões") },
+                trailingIcon = {
+                    Icon(imageVector = icon, contentDescription = "icon",
+                        modifier.clickable { expanded.value = !expanded.value })
+                },
+                readOnly = true
+            )
+        }
 
         DropdownMenu(
             expanded = expanded.value,
